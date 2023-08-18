@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { ProductWithPrice } from "@/types";
 
 interface ModalProviderProps {
