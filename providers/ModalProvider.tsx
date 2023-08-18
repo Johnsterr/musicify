@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import AuthModal from "@/components/AuthModal";
 import { ProductWithPrice } from "@/types";
 
 interface ModalProviderProps {
@@ -20,8 +21,7 @@ const ModalProvider: React.FC<ModalProviderProps> = ({ products }) => {
 
     return (
         <>
-            {/* ModalProvider */}
-            <div>ModalProvider</div>
+            <AuthModal />
         </>
     );
 };
