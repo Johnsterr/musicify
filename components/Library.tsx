@@ -3,12 +3,24 @@
 import React from "react";
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
+import useAuthModal from "@/hooks/useAuthModal";
+import useUploadModal from "@/hooks/useUploadModal";
+import { useUser } from "@/hooks/useUser";
 
 interface LibraryProps {}
 
 const Library: React.FC<LibraryProps> = () => {
+    const authModal = useAuthModal();
+    const uploadModal = useUploadModal();
+    const { user } = useUser();
     const onCLick = () => {
-        // TODO: handler later
+        if (!user) {
+            return authModal.onOpen();
+        }
+
+        // TODO: check of subscription
+
+        return uploadModal.onOpen();
     };
     return (
         <div className="flex flex-col">
