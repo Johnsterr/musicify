@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import AuthModal from "@/components/AuthModal";
+import UploadModal from "@/components/UploadModal";
 import { ProductWithPrice } from "@/types";
 
 interface ModalProviderProps {
@@ -22,6 +23,7 @@ const ModalProvider: React.FC<ModalProviderProps> = ({ products }) => {
     return (
         <>
             <AuthModal />
+            <UploadModal />
         </>
     );
 };
