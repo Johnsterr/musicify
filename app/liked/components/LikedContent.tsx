@@ -1,19 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
 import MediaItem from "@/components/MediaItem";
 import LikeButton from "@/components/LikedButton";
 import { Song } from "@/types";
 
-interface SearchContentProps {
+interface LikedContentProps {
     songs: Song[];
 }
 
-const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
+const LikedContent: React.FC<LikedContentProps> = ({ songs }) => {
+    const router = useRouter();
+    const { isLoading, user } = useUser();
+
+    useEffect(() => {
+        if (!isLoading && !user) {
+            router.replace("/");
+        }
+    }, [isLoading, user, router]);
+
     if (songs.length === 0) {
         return (
             <div className="flex flex-col gap-y-2 w-full px-6 text-neutral-400">
-                No songs found.
+                No liked songs.
             </div>
         );
     }
@@ -32,4 +43,4 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
     );
 };
 
-export default SearchContent;
+export default LikedContent;
